@@ -15,6 +15,9 @@ const Header = observer(() => {
           <a href="#catalog" className={styles.navLink}>
             Каталог
           </a>
+          <a href="#gallery" className={styles.navLink}>
+            Наши работы
+          </a>
           <a href="#advantages" className={styles.navLink}>
             Преимущества
           </a>

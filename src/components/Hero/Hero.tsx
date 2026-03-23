@@ -12,7 +12,7 @@ const Hero = () => {
           для вашего дома
         </h1>
         <p className={styles.subtitle}>
-          Более 200 оттенков и фактур. Гарантия до 25 лет. Замер бесплатно.
+          Более 200 оттенков и фактур. Гарантия до 15 лет. Замер бесплатно.
         </p>
         <div className={styles.ctaGroup}>
           <a href="#catalog" className={styles.cta}>
