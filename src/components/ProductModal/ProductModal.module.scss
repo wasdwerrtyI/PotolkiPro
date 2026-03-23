@@ -1,0 +1,278 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "sass:color";
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: $color-white;
+  border-radius: $radius-lg;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeBtn {
+  @include button-reset;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  color: $color-text;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background $transition;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
+}
+
+.image {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-lg $radius-lg 0 0;
+  aspect-ratio: 16/9;
+  flex-shrink: 0;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: $color-accent;
+  color: $color-white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: $radius-full;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.content {
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+
+  @include respond-to(md) {
+    padding: 20px;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.categoryTag {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-white;
+  background: $color-primary;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  letter-spacing: 0.3px;
+}
+
+.roomTag {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-accent-dark;
+  background: rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  padding: 3px 10px;
+  border-radius: $radius-full;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 800;
+  color: $color-text;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+}
+
+.description {
+  font-size: 14px;
+  color: $color-text-secondary;
+  line-height: 1.65;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-text;
+  background: $color-bg-secondary;
+  border: 1px solid $color-border;
+  padding: 4px 10px;
+  border-radius: $radius-full;
+
+  svg {
+    color: $color-success;
+    flex-shrink: 0;
+  }
+}
+
+.params {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.paramRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 14px;
+  font-size: 13px;
+  gap: 8px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-border;
+  }
+
+  &:nth-child(even) {
+    background: $color-bg-secondary;
+  }
+}
+
+.paramLabel {
+  color: $color-text-secondary;
+  font-weight: 500;
+}
+
+.paramValue {
+  color: $color-text;
+  font-weight: 700;
+  text-align: right;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 4px;
+
+  @include respond-to(sm) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.priceLabel {
+  font-size: 12px;
+  color: $color-text-secondary;
+  font-weight: 500;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: 800;
+  color: $color-text;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.btnAdd {
+  @include btn-primary;
+  padding: 14px 24px;
+  font-size: 14px;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+}
+
+.btnInCart {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-success;
+  background: rgba($color-success, 0.08);
+  border: 2px solid rgba($color-success, 0.25);
+  border-radius: $radius-sm;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all $transition;
+
+  &:hover {
+    background: rgba($color-success, 0.14);
+  }
+}

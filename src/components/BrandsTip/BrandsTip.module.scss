@@ -1,0 +1,175 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.wrap {
+  margin: 16px 0 4px;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-white;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 12px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $color-accent-dark;
+}
+
+.headerTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: $color-text;
+}
+
+.toggle {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-accent-dark;
+  cursor: pointer;
+  padding: 5px 12px;
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  border-radius: $radius-full;
+  background: rgba(201, 169, 110, 0.08);
+  transition: background $transition;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(201, 169, 110, 0.18);
+  }
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.body {
+  border-top: 1px solid $color-border;
+  padding: 16px;
+  animation: fadeDown 0.18s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Quick selection tips
+.tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: $color-bg-secondary;
+  border-radius: $radius-sm;
+  font-size: 12px;
+}
+
+.tipIcon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.tipQ {
+  color: $color-text-secondary;
+  flex: 1;
+}
+
+.tipA {
+  font-weight: 700;
+  color: $color-text;
+  white-space: nowrap;
+}
+
+.dividerLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+
+// Brands grid
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-bg-secondary;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.cardName {
+  font-size: 13px;
+  font-weight: 700;
+  color: $color-text;
+}
+
+.cardTag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.cardDesc {
+  font-size: 11px;
+  color: $color-text-secondary;
+  line-height: 1.5;
+}

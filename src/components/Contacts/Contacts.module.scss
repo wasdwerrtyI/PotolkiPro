@@ -1,0 +1,105 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  padding: 80px 0;
+  background: $color-bg-secondary;
+}
+
+.container {
+  @include container;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: $color-accent-dark;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  color: $color-text;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: $color-text-secondary;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+.card {
+  background: $color-white;
+  border-radius: $radius-md;
+  padding: 36px 28px;
+  border: 1px solid $color-border;
+  box-shadow: $shadow-sm;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+  align-items: center;
+  transition: box-shadow $transition, transform $transition;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-3px);
+  }
+}
+
+.iconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-sm;
+  background: rgba(201, 169, 110, 0.12);
+  @include flex-center;
+  color: $color-accent-dark;
+  margin-bottom: 12px;
+}
+
+.cardLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-text-light;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.cardValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: $color-text;
+  transition: color $transition;
+
+  &[href]:hover {
+    color: $color-accent-dark;
+  }
+}
+
+.cardNote {
+  font-size: 13px;
+  color: $color-text-secondary;
+  line-height: 1.5;
+  margin-top: 4px;
+}

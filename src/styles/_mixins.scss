@@ -1,0 +1,89 @@
+@use 'variables' as *;
+
+@mixin container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin respond-to($bp) {
+  @if $bp == sm {
+    @media (max-width: #{$breakpoint-sm}) { @content; }
+  } @else if $bp == md {
+    @media (max-width: #{$breakpoint-md}) { @content; }
+  } @else if $bp == lg {
+    @media (max-width: #{$breakpoint-lg}) { @content; }
+  } @else if $bp == xl {
+    @media (max-width: #{$breakpoint-xl}) { @content; }
+  }
+}
+
+@mixin button-reset {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+@mixin btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: $color-accent;
+  color: $color-white;
+  font-family: $font-family;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: background $transition, transform $transition-fast, box-shadow $transition;
+  text-decoration: none;
+
+  &:hover {
+    background: $color-accent-dark;
+    box-shadow: 0 4px 16px rgba(201, 169, 110, 0.35);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@mixin overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 27, 45, 0.55);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+}

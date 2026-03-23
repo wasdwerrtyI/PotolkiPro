@@ -1,0 +1,203 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "sass:color";
+
+.section {
+  padding: 80px 0;
+  background: $color-bg-secondary;
+}
+
+.container {
+  @include container;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: $color-accent-dark;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  color: $color-text;
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: $color-text-secondary;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+.card {
+  background: $color-white;
+  border-radius: $radius-lg;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 2px solid $color-border;
+  transition: box-shadow $transition;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
+  }
+
+  &.mid {
+    border-color: $color-accent;
+    position: relative;
+
+    &::before {
+      content: "Популярный выбор";
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $color-accent;
+      color: $color-white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 14px;
+      border-radius: $radius-full;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &.premium {
+    border-color: $color-primary;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flag {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cardLabel {
+  font-size: 15px;
+  font-weight: 700;
+  color: $color-text;
+  line-height: 1.2;
+}
+
+.cardOrigin {
+  font-size: 12px;
+  color: $color-text-secondary;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.cardPrice {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-accent-dark;
+  white-space: nowrap;
+  background: rgba(201, 169, 110, 0.1);
+  padding: 4px 10px;
+  border-radius: $radius-full;
+}
+
+.brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.brand {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-text-secondary;
+  background: $color-bg-secondary;
+  border: 1px solid $color-border;
+  padding: 3px 9px;
+  border-radius: $radius-full;
+}
+
+.lists {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.pros,
+.cons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 13px;
+    line-height: 1.45;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+}
+
+.pros li {
+  color: $color-text;
+
+  svg {
+    color: $color-success;
+  }
+}
+
+.cons li {
+  color: $color-text-secondary;
+
+  svg {
+    color: #e05353;
+  }
+}
+
+.note {
+  font-size: 12px;
+  color: $color-text-secondary;
+  line-height: 1.55;
+  padding: 10px 12px;
+  background: $color-bg-secondary;
+  border-radius: $radius-sm;
+  border-left: 3px solid $color-accent;
+  margin-top: auto;
+}

@@ -1,0 +1,663 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "sass:color";
+
+// ─── Секция ─────────────────────────────────────────────────────────────────
+
+.section {
+  padding: 72px 0 0;
+  background: $color-primary;
+}
+
+.container {
+  @include container;
+}
+
+.title {
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 800;
+  color: $color-white;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin-bottom: 36px;
+
+  strong {
+    color: $color-accent;
+  }
+}
+
+// ─── Двухколоночная сетка ────────────────────────────────────────────────────
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+// ─── Блок ────────────────────────────────────────────────────────────────────
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blockTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.blockTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: $color-white;
+  margin: 0;
+}
+
+.guideToggle {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-accent;
+  cursor: pointer;
+  padding: 4px 12px;
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  border-radius: $radius-full;
+  white-space: nowrap;
+  transition: background $transition;
+
+  &:hover {
+    background: rgba(201, 169, 110, 0.12);
+  }
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+}
+
+.guideArrowOpen {
+  transform: rotate(180deg);
+}
+
+.guideGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 14px;
+  animation: fadeDown 0.18s ease;
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.guideRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: $radius-sm;
+  font-size: 12px;
+}
+
+.guideIcon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.guideQ {
+  color: rgba(255, 255, 255, 0.6);
+  flex: 1;
+}
+
+.guideA {
+  font-weight: 700;
+  color: $color-accent;
+  white-space: nowrap;
+}
+
+// ─── Подсказка производителя ─────────────────────────────────────────────────
+
+.mfrTip {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  min-height: 1.5em;
+}
+
+.mfrTipName {
+  font-weight: 700;
+  color: $color-accent;
+}
+
+// ─── Пилюли (выбор) ──────────────────────────────────────────────────────────
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  @include button-reset;
+  padding: 9px 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: $radius-full;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all $transition;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+    background: rgba(201, 169, 110, 0.08);
+  }
+
+  &.pillActive {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-primary;
+    font-weight: 700;
+  }
+}
+
+// ─── Размеры ─────────────────────────────────────────────────────────────────
+
+.dimRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dimLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.dimInput {
+  width: 80px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-xs;
+  font-family: $font-family;
+  font-size: 15px;
+  font-weight: 600;
+  color: $color-white;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+  text-align: center;
+  transition: border-color $transition;
+  appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+  }
+
+  &:focus {
+    border-color: $color-accent;
+  }
+}
+
+.dimHint {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.55;
+  margin: 0;
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// ─── Визуализация комнаты ────────────────────────────────────────────────────
+
+.roomViz {
+  background: $color-white;
+  border: 1.5px solid #e0e0e0;
+  border-radius: $radius-sm;
+  padding: 20px;
+}
+
+.roomBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.roomInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.roomIcon {
+  width: 64px;
+  height: 64px;
+}
+
+.roomArea {
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-text;
+  letter-spacing: -0.5px;
+}
+
+.roomDims {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: $color-text-secondary;
+  font-weight: 500;
+}
+
+.roomDimL,
+.roomDimW {
+  background: $color-bg-secondary;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+}
+
+// ─── Чекбоксы ────────────────────────────────────────────────────────────────
+
+.extrasGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.extrasCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.checkbox {
+  display: none;
+
+  &:checked + .checkMark {
+    background: $color-accent;
+    border-color: $color-accent;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.checkMark {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  position: relative;
+  margin-top: 1px;
+  transition: all $transition;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid $color-primary;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity $transition;
+  }
+}
+
+.checkText {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.checkPrice {
+  font-size: 12px;
+  color: rgba(201, 169, 110, 0.8);
+  font-weight: 500;
+}
+
+// ─── Счётчик количества ───────────────────────────────────────────────────────
+
+.countRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 28px;
+}
+
+.countLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.countBtn {
+  @include button-reset;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+}
+
+.countVal {
+  font-size: 15px;
+  font-weight: 700;
+  color: $color-white;
+  min-width: 20px;
+  text-align: center;
+}
+
+.countUnit {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+// ─── Итоговая цена (внизу) ────────────────────────────────────────────────────
+
+.priceBar {
+  background: linear-gradient(
+    135deg,
+    rgba(201, 169, 110, 0.12) 0%,
+    rgba(201, 169, 110, 0.05) 100%
+  );
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  border-radius: $radius-lg;
+  padding: 32px 36px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include respond-to(sm) {
+    padding: 24px 20px;
+  }
+}
+
+.priceResult {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+.priceNum {
+  font-size: 38px;
+  font-weight: 900;
+  color: $color-white;
+  letter-spacing: -1px;
+  line-height: 1;
+
+  @include respond-to(sm) {
+    font-size: 28px;
+  }
+}
+
+.sendForm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  @include respond-to(sm) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.phoneInput {
+  height: 52px;
+  padding: 0 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-sm;
+  font-family: $font-family;
+  font-size: 15px;
+  color: $color-white;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  width: 240px;
+  transition:
+    border-color $transition,
+    background $transition;
+  backdrop-filter: blur(4px);
+
+  &:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+  }
+  &.phoneInputError {
+    border-color: #ff6b6b;
+  }
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  @include respond-to(sm) {
+    width: 100%;
+  }
+}
+
+.sendBtn {
+  @include button-reset;
+  height: 52px;
+  padding: 0 32px;
+  background: $color-accent;
+  color: $color-primary;
+  font-family: $font-family;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(201, 169, 110, 0.35);
+  transition:
+    background $transition,
+    transform $transition-fast,
+    box-shadow $transition;
+
+  &:hover {
+    background: $color-accent-light;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(201, 169, 110, 0.5);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.phoneError {
+  font-size: 12px;
+  color: #ff9999;
+  margin: 0;
+}
+
+.priceNote {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.5;
+  margin: 0;
+
+  a {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+// ─── Spinner ──────────────────────────────────────────────────────────────────
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: $color-white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ─── Success ─────────────────────────────────────────────────────────────────
+
+.success {
+  text-align: center;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: $color-white;
+  }
+  p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    strong {
+      color: $color-white;
+    }
+  }
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(201, 169, 110, 0.15);
+  color: $color-accent;
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resetBtn {
+  @include button-reset;
+  padding: 12px 28px;
+  background: $color-accent;
+  color: $color-primary;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background $transition;
+
+  &:hover {
+    background: $color-accent-light;
+  }
+}

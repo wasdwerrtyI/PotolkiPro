@@ -1,0 +1,40 @@
+$color-primary: #0f1b2d;
+$color-accent: #c9a96e;
+$color-accent-dark: #b8935a;
+$color-accent-light: #e8d5b0;
+$color-bg: #ffffff;
+$color-bg-secondary: #f7f6f2;
+$color-text: #1a1a1a;
+$color-text-secondary: #5a5a5a;
+$color-text-light: #9a9a9a;
+$color-border: #e8e4dc;
+$color-success: #4caf50;
+$color-error: #e53935;
+$color-white: #ffffff;
+
+$font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+$radius-xs: 4px;
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 24px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.16);
+$shadow-card: 0 2px 12px rgba(15, 27, 45, 0.08);
+
+$transition-fast: 0.15s ease;
+$transition: 0.25s ease;
+$transition-slow: 0.4s ease;
+
+$header-height: 72px;
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+$container-max: 1280px;
+$container-padding: 24px;
